@@ -27,6 +27,11 @@ let startPosition = {
   y: 0,
 };
 
+let mouseMove = {
+  x: 0,
+  y: 0,
+};
+
 const onPointerDown = (event: PIXI.FederatedEvent) => {
   console.log("onPointerDown");
   const target = event.currentTarget as Draggable;
@@ -51,10 +56,6 @@ const onPointerUp = (event: PIXI.FederatedEvent) => {
     x: target.x,
     y: target.y,
   };
-
-  //   console.log("startPosition UP");
-  //   console.log("startPosition.x: " + startPosition.x);
-  //   console.log("startPosition.y: " + startPosition.y);
 };
 
 const onPointerOut = (event: PIXI.FederatedEvent) => {
@@ -72,20 +73,27 @@ const onPointerMove = (event: PIXI.FederatedEvent) => {
   const target = event.currentTarget as Draggable;
   if (!target.dragging) return;
 
-  //   console.log("onPointerMove");
-  //   console.log("X: " + event.pageX);
-  //   console.log("Y: " + event.pageY);
-
-  //   console.log("target");
-  //   console.log("target.x: " + target.x);
-  //   console.log("target.y: " + target.y);
-
-  target.x = event.pageX;
-  target.y = event.pageY;
+  target.x += mouseMove.x;
+  target.y += mouseMove.y;
 };
 
 export const PostPreview = (props: PostPreviewProps) => {
   const { text, bgUrl } = usePreviewStore();
+
+  useEffect(() => {
+    document.addEventListener("mousemove", (e) => {
+      mouseMove = {
+        x: e.movementX,
+        y: e.movementY,
+      };
+    });
+
+    return () => {
+      document.removeEventListener("mousemove", (e) => {
+        console.log("removed mouse move");
+      });
+    };
+  }, []);
 
   return (
     <div className="flex justify-center">

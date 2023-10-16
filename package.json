@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@pixi/filter-adjustment": "^5.1.1",
     "@pixi/react": "^7.1.1",
     "@redux-devtools/extension": "^3.2.5",
     "next": "13.5.4",

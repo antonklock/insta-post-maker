@@ -1,20 +1,15 @@
 "use client";
 import { usePreviewStore } from "../stores/PreviewStore";
-import { useEffect } from "react";
 
-type PostTextProps = {
+type UrlTextProps = {
   text: string;
 };
 
-export const PostText = (props: PostTextProps) => {
-  const { setText } = usePreviewStore();
-
-  useEffect(() => {
-    setText("Hola Mundo!");
-  }, []);
+export const UrlText = (props: UrlTextProps) => {
+  const { setBgUrl } = usePreviewStore();
 
   const handleInputChange = (e: any) => {
-    setText(e.target.value);
+    setBgUrl(e.target.value);
   };
 
   return (

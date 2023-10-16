@@ -1,7 +1,7 @@
 "use client";
 
 import { Stage, Container, Sprite, Text } from "@pixi/react";
-import { usePreviewStore } from "./PreviewStore";
+import { usePreviewStore } from "../stores/PreviewStore";
 
 const imgUrl =
   "https://images.unsplash.com/photo-1630713815198-17ff8a8a7103?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=4140&q=80";

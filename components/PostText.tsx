@@ -1,5 +1,5 @@
 "use client";
-import { usePreviewStore } from "./PreviewStore";
+import { usePreviewStore } from "../stores/PreviewStore";
 import { useEffect, useState } from "react";
 
 type PostTextProps = {
@@ -7,7 +7,6 @@ type PostTextProps = {
 };
 
 export const PostText = (props: PostTextProps) => {
-  //   const { text: text } = props;
   let placeholder = "";
   const { setText } = usePreviewStore();
 
